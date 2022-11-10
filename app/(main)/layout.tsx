@@ -2,6 +2,9 @@ import { googleSans } from './fonts';
 import './globals.scss';
 import { Header } from './Header';
 
+import 'antd/dist/antd.variable.min.css';
+
+
 export default function RootLayout({
   children,
 }: {
@@ -9,13 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <body className={googleSans.className}>
         <Header />
-        {children}
+        <div>{children}</div>
       </body>
     </html>
   );

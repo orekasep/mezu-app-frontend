@@ -2,6 +2,17 @@
 const nextConfig = {
   experimental: {
     appDir: true,
+    modularizeImports: {
+      'antd': {
+        transform: 'antd/lib/{{kebabCase member}}',
+        preventFullImport: true,
+      },
+      'lodash': {
+        transform: 'lodash/{{member}}',
+        preventFullImport: true,
+      }
+    },
+    serverComponentsExternalPackages: ['antd']
   },
   compiler: {
     styledComponents: true,

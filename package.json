@@ -10,6 +10,7 @@
     "lint-fix": "next lint --fix"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@next/font": "^13.0.2",
     "@svgr/webpack": "^6.5.1",
     "@types/node": "18.11.9",
@@ -17,8 +18,10 @@
     "@types/react-dom": "18.0.8",
     "@yarnpkg/sdks": "^3.0.0-rc.27",
     "antd": "^4.24.1",
+    "dayjs": "^1.11.6",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.2",
+    "lodash": "^4.17.21",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",

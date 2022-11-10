@@ -13,21 +13,15 @@ export const HeroSection = () => {
         alt=''
       />
       <div className='absolute top-0 left-0 right-0 min-h-screen flex gap-4 justify-center items-center'>
-        <div className='container max-w-screen-xl flex items-center'>
-          <div className='w-1/2'>
-            <p className='text-[42px] text-white font-bold uppercase'>
-              {`Cùng MEZU app,`}
-            </p>
-            <p className='text-[42px] text-white font-bold uppercase'>
-              {`bạn có thể tạo các menu đồ ăn, uống cho quán`}
-            </p>
-            <p className='text-[42px] text-white font-bold uppercase'>
-              {`một cách dễ dàng.`}
-            </p>
-            <p className='text-xl text-white'>
+        <div className='container max-w-screen-xl flex lg:flex-row flex-col items-center'>
+          <div className='lg:w-1/2 w-full xl:px-0 px-4 lg:text-left text-center'>
+            <h1 className='xl:text-[42px] md:text-3xl text-2xl text-white font-bold uppercase'>
+              {`Cùng MEZU app, bạn có thể tạo các menu đồ ăn, uống cho quán một cách dễ dàng.`}
+            </h1>
+            <p className='lg:text-xl text-sm text-white'>
               {`Tăng tốc bán hàng ngay từ bây giờ.`}
             </p>
-            <div className='flex mt-4 gap-8'>
+            <div className='flex mt-4 gap-8 lg:justify-start justify-center'>
               <Link href=''>
                 <Image
                   className='w-auto h-10'
@@ -43,9 +37,9 @@ export const HeroSection = () => {
                 />
               </Link>
             </div>
-            <p className='mt-4 text-base text-white'>• {`Tải về ứng dụng MEZU miễn phí ngay`}</p>
+            <p className='mt-4 lg:text-base text-xs text-white'>• {`Tải về ứng dụng MEZU miễn phí ngay`}</p>
           </div>
-          <div className='w-1/2'>
+          <div className='lg:w-1/2 w-full xl:px-0 px-4'>
             <Image
               src={appPreview}
               alt=''
