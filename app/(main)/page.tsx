@@ -1,11 +1,19 @@
-import { HeroSection } from 'components'
+import {
+  HeroSection,
+  FeatureMenuSection,
+  FeatureOrderSection,
+  ClientSection,
+} from "components";
 
 export default function Home() {
   return (
     <div>
-      <main className=''>
+      <main className="">
         <HeroSection />
-      </main>        
+        <FeatureMenuSection />
+        <FeatureOrderSection />
+        <ClientSection />
+      </main>
     </div>
-  )
+  );
 }
