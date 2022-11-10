@@ -15,9 +15,18 @@ export const HeroSection = () => {
       <div className='absolute top-0 left-0 right-0 min-h-screen flex gap-4 justify-center items-center'>
         <div className='container max-w-screen-xl flex lg:flex-row flex-col items-center'>
           <div className='lg:w-1/2 w-full xl:px-0 px-4 lg:text-left text-center'>
-            <h1 className='xl:text-[42px] md:text-3xl text-2xl text-white font-bold uppercase'>
+            <p
+              className={`
+                xl:leading-normal md:leading-normal leading-normal
+                xl:text-[42px] md:text-3xl text-2xl text-white font-bold uppercase mb-0`
+              }
+            >
               {`Cùng MEZU app, bạn có thể tạo các menu đồ ăn, uống cho quán một cách dễ dàng.`}
-            </h1>
+            </p>
+            {/* <p className='md:leading-normal xl:text-[42px] md:text-3xl text-2xl text-white font-bold uppercase mb-0'>
+            </p>
+            <p className='xl:text-[42px] md:text-3xl text-2xl text-white font-bold uppercase mb-2'>
+            </p> */}
             <p className='lg:text-xl text-sm text-white'>
               {`Tăng tốc bán hàng ngay từ bây giờ.`}
             </p>
