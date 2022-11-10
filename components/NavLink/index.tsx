@@ -1,11 +1,11 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export const NavLink = ({
   title,
   href
 }: {
-  title: string
-  href: string
+  title: string;
+  href?: string;
 }) => {
   return (
     <Link href={href ?? ''}>
@@ -20,5 +20,5 @@ export const NavLink = ({
         {title}
       </li>
     </Link>
-  )
-}
+  );
+};

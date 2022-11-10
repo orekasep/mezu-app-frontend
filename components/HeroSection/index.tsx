@@ -1,9 +1,9 @@
-import Image from 'next/image'
-import background from 'public/images/home-background.png'
-import appleStore from 'public/images/apple-store.png'
-import playStore from 'public/images/play-store.png'
-import appPreview from 'public/images/app-preview.png'
-import Link from 'next/link'
+import Image from 'next/image';
+import background from 'public/images/home-background.png';
+import appleStore from 'public/images/apple-store.png';
+import playStore from 'public/images/play-store.png';
+import appPreview from 'public/images/app-preview.png';
+import Link from 'next/link';
 
 export const HeroSection = () => {
   return (
@@ -54,7 +54,7 @@ export const HeroSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;
