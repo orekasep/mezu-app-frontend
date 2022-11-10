@@ -16,10 +16,10 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@components": ["components"],
-      "@constants": ["src/constants"],
-      "@public": ["public"],
-      "@types": ["src/types"]
+      "components": ["components"],
+      "constants": ["src/constants"],
+      "public": ["public"],
+      "types": ["src/types"]
     },
     "plugins": [
       {
