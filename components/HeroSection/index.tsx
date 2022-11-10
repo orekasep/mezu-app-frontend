@@ -23,10 +23,6 @@ export const HeroSection = () => {
             >
               {`Cùng MEZU app, bạn có thể tạo các menu đồ ăn, uống cho quán một cách dễ dàng.`}
             </p>
-            {/* <p className='md:leading-normal xl:text-[42px] md:text-3xl text-2xl text-white font-bold uppercase mb-0'>
-            </p>
-            <p className='xl:text-[42px] md:text-3xl text-2xl text-white font-bold uppercase mb-2'>
-            </p> */}
             <p className='lg:text-xl text-sm text-white'>
               {`Tăng tốc bán hàng ngay từ bây giờ.`}
             </p>
