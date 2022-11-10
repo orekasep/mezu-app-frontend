@@ -1,3 +1,68 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/strict",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "ignorePatterns": ["!**/*", "*.config.js"],
+  "overrides": [
+    {
+      "files":["./culinary/api/src/services-fetch/*.ts"],
+      "rules": {
+        "@typescript-eslint/no-unsafe-return": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "tsconfigRootDir": "./",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/func-call-spacing": "warn",
+    "@typescript-eslint/keyword-spacing": "warn",
+    "@typescript-eslint/member-delimiter-style": "warn",
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        "selector": "function",
+        "format": ["PascalCase", "camelCase"]
+      }
+    ],
+    "@typescript-eslint/restrict-plus-operands": ["error", { "allowAny": true, "checkCompoundAssignments": true }],
+    "@typescript-eslint/semi": "warn",
+    "arrow-spacing": ["warn", { "before": true, "after": true }],
+    "block-spacing": ["warn", "always"],
+    "eqeqeq": "error",
+    "func-call-spacing": "off", // conflict
+    "key-spacing": "warn",
+    "keyword-spacing": "off", // conflict
+    "max-len": ["warn", { "code": 120 }],
+    "no-lonely-if": "warn",
+    "no-multiple-empty-lines": ["warn", { "max": 2 }],
+    "no-trailing-spaces": "error",
+    "no-useless-escape": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-unused-vars": "off", // conflict
+    "no-var": "error",
+    "prefer-const": "error",
+    "quotes": ["warn", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "import/no-duplicates": ["error"]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "webpack": true
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [ ".ts", ".tsx" ]
+    }
+  }
 }
