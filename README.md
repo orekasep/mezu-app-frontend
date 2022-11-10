@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![node@latest: v19.0.1 (shields.io)](https://img.shields.io/badge/node%40latest-v19.0.1-c80000?style=flat-square&logo=npm) ![yarn@stable: 3.2.4 (shields.io)](https://img.shields.io/badge/yarn%40stable-3.2.4-2188b6?style=flat-square&logo=yarn) ![React@latest: 18.2.0 (shields.io)](https://img.shields.io/badge/react%40latest-^18.2.0-61dafb?style=flat-square&logo=react) ![Next.js: 12.3.0 (shields.io)](https://img.shields.io/badge/next@latest-^13.0.2-323130?style=flat-square&logo=nextdotjs) ![Typescript: lang (shields.io)](https://img.shields.io/badge/-typescript-3178c6?style=flat-square&logo=typescript&logoColor=white) ![antd@latest: 4.23.3 (shields.io)](https://img.shields.io/badge/antd%40latest-^4.24.1-1890ff?style=flat-square&logo=antdesign) ![tailwindcss (shields.io)](https://img.shields.io/badge/-tailwindcss-06b6d4?style=flat-square&logo=tailwindcss&logoColor=white)
 
-## Getting Started
+## Table of content
+ - [Installation](#installation)
+ - [CLI Commands](#cli-commands)
+ - [View host](#view-host)
+ - [Important notes](#important-notes)
 
-First, run the development server:
+## Installation
+    git clone git@github.com:hieu1871998/mezu-app-frontend.git
+    cd mezu-app-frontend
+    yarn install  
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## CLI Commands
+### Build:
+	yarn build
+### Development:
+    yarn dev
+### Production
+	yarn start
+	
+## View host
+    http://localhost:3000/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Important notes
+- Yarn [Plug'n'Play](https://yarnpkg.com/features/pnp) enabled.
+- Next.js [appDir](https://beta.nextjs.org/docs/routing/fundamentals) enabled.
+- Remember to replace `"typescript.tsdk": "./node_modules/typescript/lib"` -> `"typescript.tsdk": ".yarn/sdks/typescript/lib"` after running `yarn dev` or `yarn build` or any next related command.
