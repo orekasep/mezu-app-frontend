@@ -3,16 +3,16 @@ const nextConfig = {
   experimental: {
     appDir: true,
     modularizeImports: {
-      'antd': {
+      antd: {
         transform: 'antd/lib/{{kebabCase member}}',
         preventFullImport: true,
       },
-      'lodash': {
+      lodash: {
         transform: 'lodash/{{member}}',
         preventFullImport: true,
-      }
+      },
     },
-    serverComponentsExternalPackages: ['antd']
+    serverComponentsExternalPackages: ['antd'],
   },
   compiler: {
     styledComponents: true,
@@ -21,17 +21,19 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
-      use: [{
-        loader: "@svgr/webpack",
-        options: {
-          typescript: true,
-          ext: "tsx",
-        }
-      }],
-    })
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            typescript: true,
+            ext: 'tsx',
+          },
+        },
+      ],
+    });
 
-    return config
+    return config;
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

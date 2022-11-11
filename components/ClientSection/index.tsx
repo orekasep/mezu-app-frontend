@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import background from "public/images/home/client-bg.png";
-import sampleLogo from "public/images/home/client-sample-logo.png";
+import Image from 'next/image';
+import Link from 'next/link';
+import background from 'public/images/home/client-bg.png';
+import sampleLogo from 'public/images/home/client-sample-logo.png';
 
 export const ClientSection = () => {
   return (

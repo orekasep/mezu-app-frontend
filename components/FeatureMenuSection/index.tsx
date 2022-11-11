@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import featureMenu from "public/images/home/feature-menu.png";
-import featureImg1 from "public/images/home/feature-img-1.png";
-import featureImg2 from "public/images/home/feature-img-2.png";
-import featureImg3 from "public/images/home/feature-img-3.png";
+import Image from 'next/image';
+import Link from 'next/link';
+import featureMenu from 'public/images/home/feature-menu.png';
+import featureImg1 from 'public/images/home/feature-img-1.png';
+import featureImg2 from 'public/images/home/feature-img-2.png';
+import featureImg3 from 'public/images/home/feature-img-3.png';
 
 export const FeatureMenuSection = () => {
   return (
