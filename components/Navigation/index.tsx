@@ -4,7 +4,7 @@ export const Navigation = () => {
   return (
     <nav className='flex sm:flex-row flex-col items-center sm:gap-8 gap-0'>
       <ul className='flex sm:flex-row flex-col mb-0'>
-        <NavLink href='/san-pham' title={`Sản phẩm`} />
+        <NavLink href='/' title={`Trang chủ`} />
         <NavLink href='/huong-dan-su-dung' title={`Hướng dẫn`} />
         <NavLink href='/tin-tuc' title={`Tin tức`} />
         <NavLink href='/lien-he' title={`Liên hệ`} />
