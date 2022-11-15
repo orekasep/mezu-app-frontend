@@ -1,12 +1,12 @@
 'use client';
 
-import { googleSans } from './fonts';
+import { googleSans } from '../(main)/fonts';
 import '../globals.scss';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import 'antd/dist/antd.variable.min.css';
 
-export default function RootLayout({
+export default function PageLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={googleSans.className}>
-        <Header />
+        <Header transparent />
         <div>{children}</div>
         <Footer />
       </body>
