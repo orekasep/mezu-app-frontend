@@ -40,8 +40,14 @@ export default function Contact() {
               </h2>
             </div>
             <div className='relative m-5 flex-1 h-auto bg-gradient-to-r from-primary-light to-primary-dark'>
-              <Image src={background} layout='fill' objectFit='cover' alt='' />
-              <div className='absolute w-full text-center top-0 p-8'>
+              <Image
+                src={background}
+                layout='fill'
+                objectFit='cover'
+                alt=''
+                className='h-full'
+              />
+              <div className='relative w-full text-center top-0 p-8'>
                 <h2 className='w-3/4 mx-auto text-xl font-bold text-white'>
                   MENU APP - TẠO MENU ĐỒ ĂN UỐNG GỌI MÓN VÀ QUẢN LÝ QUÁN MIỄN
                   PHÍ
