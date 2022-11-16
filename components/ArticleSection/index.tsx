@@ -1,11 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import featureOrder from 'public/images/home/feature-order.png';
-import featureImg1 from 'public/images/home/feature-img-1.png';
-import featureImg2 from 'public/images/home/feature-img-2.png';
-import featureImg3 from 'public/images/home/feature-img-3.png';
-import { Carousel } from 'antd';
+import { Carousel, Grid } from 'antd';
 import styled from 'styled-components';
+
+const { useBreakpoint } = Grid;
 
 const contentStyle: React.CSSProperties = {
   height: '160px',
@@ -69,13 +65,16 @@ const sampleData = [
   },
 ];
 
-console.log(sampleData.map((d) => d.title));
-
 export const ArticleSection = () => {
+  const screens = useBreakpoint();
+
   return (
     <section className='relative bg-slate-50'>
+      <h2 className='text-3xl color-primary font-bold text-center pt-10'>
+        Tin tức & kiến thức từ MEZU
+      </h2>
       <div className='container max-w-screen-xl m-auto'>
-        <Carousel slidesToShow={3} className='w-full h-full'>
+        <Carousel slidesToShow={screens.xs ? 1 : 3} className='w-full h-full'>
           {sampleData.map((article) => (
             <ArticleItem key={article.id} {...article} />
           ))}

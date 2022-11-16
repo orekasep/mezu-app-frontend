@@ -15,7 +15,7 @@ export const Navigation = () => {
       >
         <Link
           passHref
-          href={'/dang-ky-mien-phi'}
+          href={'/dang-ky'}
           className='text-white hover:text-black'
         >{`Đăng ký miễn phí`}</Link>
       </button>
