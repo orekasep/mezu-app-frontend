@@ -18,6 +18,12 @@ const FormWrapper = styled.div`
     padding: 6px 15px;
     height: 40px;
     width: 50%;
+    background-color: #ea7298;
+    border-color: #ea7298;
+    transition: all 0.3s;
+    &:hover {
+      color: #000;
+    }
   }
   .ant-form-item-label {
     padding: 0;

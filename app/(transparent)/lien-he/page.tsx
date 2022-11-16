@@ -184,6 +184,25 @@ export default function Contact() {
             </div>
           </div>
         </section>
+        <section className='info text-center mb-10'>
+          <h2 className='font-medium text-2xl color-primary mt-10 mb-0'>
+            CÔNG TY CỔ PHẦN CÔNG NGHỆ CAO LHT HOLDINGS
+          </h2>
+          <p className='color-primary'>
+            Số 5 ngách 174/15 Phương Canh, Xuân Phương, Nam Từ Liêm, Hà Nội
+          </p>
+          <div className='bg-[#1A3375] w-[150px] h-[2px] mx-auto' />
+          <div className='flex flex-row justify-center color-primary'>
+            <div className='bg-slate-100 m-5 py-5 px-10'>
+              <h6 className='uppercase m-0 color-primary'>Email</h6>
+              <p className='text-xl m-0 font-bold'>contact@menuapp.com</p>
+            </div>
+            <div className='bg-slate-100 m-5 py-5 px-10 color-primary'>
+              <h6 className='uppercase m-0 color-primary'>Hotline</h6>
+              <p className='text-xl m-0 font-bold'>(+84) 0983 557 673</p>
+            </div>
+          </div>
+        </section>
       </main>
     </ContactWrapper>
   );
