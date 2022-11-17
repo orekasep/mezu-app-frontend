@@ -1,6 +1,6 @@
 export interface ThumbnailProps {
   data: {
-    attributes: {
+    attributes?: {
       url: string;
     };
   };
@@ -13,5 +13,25 @@ export interface ArticleProps {
     Description: string;
     Slug: string;
     Thumbnail: ThumbnailProps;
+    ThumbnailUrl?: string;
   };
+}
+
+export interface ArticleResponseProps {
+  data?: [ArticleProps];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+export interface ArticleItemProps {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
 }

@@ -1,37 +1,38 @@
-import { Typography } from 'antd';
-import Image from 'next/image';
+'use client';
 
-export const NewsItem = ({
-  src,
-  title,
-  description,
-  link,
-}: {
-  src: string;
-  title: string;
-  description: string;
-  link?: string;
-}) => {
+import { ArticleItemProps } from 'common';
+import styled from 'styled-components';
+import { Typography } from 'antd';
+
+const ArticleItemWrapper = styled.div`
+  img.thumbnail {
+    transition: 0.3s all;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+`;
+
+const ArticleItem = (props: ArticleItemProps) => {
   return (
-    <div className='news-item mx-3.5 mb-6'>
-      <div className='img-posts'>
-        <a href={link ?? '#'}>
-          <Image
-            className=' w-full h-[14rem] img-posts object-cover'
-            alt='MEZU bài tin'
-            src={src}
-          />
-        </a>
-      </div>
-      <div className='mt-4 text-left'>
-        <h2 className='font-bold text-lg'>
-          <a href={link ?? '#'}>{title}</a>
-        </h2>
-        <div className='divider my-2'></div>
-        <Typography.Paragraph ellipsis={{ rows: 3, expandable: false }}>
-          {description}
-        </Typography.Paragraph>
-      </div>
-    </div>
+    <ArticleItemWrapper className='p-4 mt-4'>
+      <img
+        src={props.url}
+        alt='Article image'
+        className='thumbnail w-full h-[250px] object-cover rounded-2xl'
+      />
+      <h3 className='font-bold text-xl py-4 m-0 color-primary'>
+        {props.title}
+      </h3>
+      <Typography.Paragraph
+        style={{ overflowWrap: 'anywhere' }}
+        className='font-normal color-primary'
+        ellipsis={{ rows: 3, expandable: false }}
+      >
+        {props.description}
+      </Typography.Paragraph>
+    </ArticleItemWrapper>
   );
 };
+
+export default ArticleItem;

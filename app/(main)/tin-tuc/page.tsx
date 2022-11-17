@@ -1,14 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import { Endpoints, Settings } from 'common';
-
-import background from 'public/images/home-background.png';
-import { ArticleProps } from 'common/EntityProps';
+import ArticleItem from 'components/ArticleItem';
+import { ArticleResponseProps } from 'common/EntityProps';
 import { stringify } from 'qs';
 
+import background from 'public/images/home-background.png';
+import { MiniArticleItem } from 'components/MiniArticleItem';
+
 export default async function Blog() {
-  const articles: [ArticleProps?] = (await getArticles()) as [ArticleProps];
-  console.log(articles);
+  const { data: articles } = await getArticles();
+  const { data: latestArticles } = await getLatestArticles();
+  console.log(latestArticles);
 
   return (
     <div>
@@ -24,9 +27,33 @@ export default async function Blog() {
           </div>
         </section>
         <section className='articles'>
-          <div className='container max-w-screen-xl flex flex-row'>
-            <div className='flex-4'></div>
-            <div className='flex-1'></div>
+          <div className='container mx-auto max-w-screen-xl flex flex-row'>
+            <div className='w-4/5 grid grid-flow-col grid-cols-3 pr-5'>
+              {articles?.map((article) => (
+                <ArticleItem
+                  key={article.id}
+                  id={article.id}
+                  title={article.attributes.Title}
+                  description={article.attributes.Description}
+                  url={
+                    article.attributes.ThumbnailUrl ??
+                    article.attributes.Thumbnail.data.attributes?.url ??
+                    ''
+                  }
+                />
+              ))}
+            </div>
+            <div className='w-1/5'>
+              <h2 className='mt-10 mb-0 color-primary text-xl'>
+                BÀI VIẾT MỚI NHẤT
+              </h2>
+              <div className='divider' />
+              <div className='mt-4'>
+                {latestArticles?.map((article) => (
+                  <MiniArticleItem key={article.id} article={article} />
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -34,13 +61,13 @@ export default async function Blog() {
   );
 }
 
-async function getArticles() {
+async function getArticles(): Promise<ArticleResponseProps> {
   const params: string = stringify({
     pagination: {
       pageSize: Settings.MAX_CATEGORY_BLOG,
     },
     sort: ['PublishedDate:desc'],
-    fields: ['Slug', 'Title', 'PublishedDate', 'Description'],
+    fields: ['Slug', 'Title', 'PublishedDate', 'Description', 'ThumbnailUrl'],
     populate: {
       Thumbnail: {
         fields: ['url'],
@@ -48,14 +75,30 @@ async function getArticles() {
     },
   });
   const res = await fetch(`${Endpoints.ARTICLES}?${params}`);
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  // Recommendation: handle errors
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
   }
 
-  return res.json();
+  return res.json() as Promise<ArticleResponseProps>;
+}
+
+async function getLatestArticles(): Promise<ArticleResponseProps> {
+  const params: string = stringify({
+    pagination: {
+      pageSize: Settings.MAX_LATEST_BLOG,
+    },
+    sort: ['PublishedDate:desc'],
+    fields: ['Slug', 'Title', 'ThumbnailUrl'],
+    populate: {
+      Thumbnail: {
+        fields: ['url'],
+      },
+    },
+  });
+  const res = await fetch(`${Endpoints.ARTICLES}?${params}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json() as Promise<ArticleResponseProps>;
 }
