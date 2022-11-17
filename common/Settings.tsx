@@ -1,0 +1,6 @@
+export const Settings = {
+  MAX_HOME_BLOG: 5,
+  MAX_CATEGORY_BLOG: 12,
+  MAX_CATEGORY_ARTICLE: 30,
+  MAX_LATEST_BLOG: 10,
+};

@@ -1,6 +1,6 @@
 'use client';
 
-import { googleSans } from './fonts';
+import { googleSans } from '../fonts';
 import '../globals.scss';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';

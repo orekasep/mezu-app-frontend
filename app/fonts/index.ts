@@ -1,4 +1,4 @@
-import localFont from '@next/font/local'
+import localFont from '@next/font/local';
 
 export const googleSans = localFont({
   src: [
@@ -33,6 +33,6 @@ export const googleSans = localFont({
       style: 'italic'
     }
   ]
-})
+});
 
-export default googleSans
+export default googleSans;

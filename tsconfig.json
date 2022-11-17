@@ -17,7 +17,7 @@
     "incremental": true,
     "paths": {
       "components": ["components"],
-      "constants": ["constants"],
+      "common": ["common"],
       "hooks": ["hooks"],
       "public": ["public"],
       "types": ["types"]

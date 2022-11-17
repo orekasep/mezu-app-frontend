@@ -35,3 +35,13 @@ a {
 .color-primary {
   color: #22337a;
 }
+
+.divider {
+  height: 3px;
+  min-width: 30px;
+  display: inline-block;
+  background-color: #7b87c555;
+  &.center {
+    margin: 0 auto;
+  }
+}
