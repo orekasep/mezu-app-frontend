@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { AutoComplete, Input } from 'antd';
-import type { SelectProps } from 'antd/es/select';
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -16,8 +17,14 @@ import chartIcon from 'public/images/kb/chart-outline.png';
 import appleStore from 'public/images/apple-store.png';
 import playStore from 'public/images/play-store.png';
 import { ArticleSection } from 'components';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
+import parse from 'html-react-parser';
 
-const { Search } = Input;
+const searchClient = instantMeiliSearch(
+  process.env.NEXT_PUBLIC_MEILISEARCH_URL ?? '',
+  process.env.NEXT_PUBLIC_MEILISEARCH_DEFAULT_KEY ?? ''
+);
 
 interface FeatureItemProps {
   icon: StaticImageData;
@@ -68,77 +75,71 @@ const features = [
   },
 ];
 
-const getRandomInt = (max: number, min = 0) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
-
-const searchResult = (query: string) =>
-  new Array(getRandomInt(5))
-    .join('.')
-    .split('.')
-    .map((_, idx) => {
-      const category = `${query}${idx}`;
-      return {
-        value: category,
-        label: (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <span>
-              Found {query} on{' '}
-              <a
-                href={`https://s.taobao.com/search?q=${query}`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {category}
-              </a>
-            </span>
-            <span>{getRandomInt(200, 100)} results</span>
-          </div>
-        ),
-      };
-    });
-
 const Wrapper = styled.div`
-  .ant-input-search {
-    .ant-input {
-      height: 44px;
-      border-top-left-radius: 22px;
-      border-bottom-left-radius: 22px;
+  .ais-SearchBox-form {
+    display: flex;
+    position: relative;
+    .ais-SearchBox-input {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 100%;
+      height: 32px;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+      outline-width: 0;
+    }
+    .ais-SearchBox-submit {
+      width: 40px;
+      height: 32px;
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+      background-color: #db6c8f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg.ais-SearchBox-submitIcon {
+      fill: white;
+      width: 16px;
+      height: 16px;
+    }
+    .ais-SearchBox-reset {
+      position: absolute;
+      right: 45px;
+      top: 10px;
+      z-index: 10;
     }
   }
 
-  .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child {
-    border-top-right-radius: 22px;
-    border-bottom-right-radius: 22px;
-  }
-  .ant-input-search
-    > .ant-input-group
-    > .ant-input-group-addon:last-child
-    .ant-input-search-button {
-    height: 44px;
-    border-top-right-radius: 22px;
-    border-bottom-right-radius: 22px;
-  }
-  .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
-    border-right-width: 0;
+  .ais-Hits {
+    position: absolute;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 2px;
+    left: 0;
+    right: 0;
+    .ais-Hits-list {
+      margin-bottom: 0;
+    }
+    ais-highlight* {
+      color: #db6c8f;
+    }
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const Hit = ({ hit }: { hit: any }) => {
+  const { _highlightResult } = hit;
+  console.log('_highlightResult', _highlightResult);
+  return (
+    <div key={hit.id} className='py-2 px-2 hover:bg-slate-100'>
+      {parse(_highlightResult ? _highlightResult?.Title?.value : '')}
+    </div>
+  );
+};
+
 export default function KnowledgeBase() {
-  const [options, setOptions] = useState<SelectProps<object>['options']>([]);
-
-  const handleSearch = (value: string) => {
-    setOptions(value ? searchResult(value) : []);
-  };
-
-  const onSelect = (value: string) => {
-    console.log('onSelect', value);
-  };
-
   return (
     <Wrapper>
       <main className=''>
@@ -150,15 +151,15 @@ export default function KnowledgeBase() {
                 Chào mừng bạn đến với trang hướng dẫn của MEZU app
               </h2>
               <div className='lg:w-1/2 w-full mx-auto'>
-                <AutoComplete
-                  dropdownMatchSelectWidth={252}
-                  style={{ width: '100%' }}
-                  options={options}
-                  onSelect={onSelect}
-                  onSearch={handleSearch}
-                >
-                  <Search placeholder='Nhập nội dung bạn cần tìm' enterButton />
-                </AutoComplete>
+                <div className='relative'>
+                  <InstantSearch
+                    indexName='mezu-kb'
+                    searchClient={searchClient}
+                  >
+                    <SearchBox searchAsYouType showLoadingIndicator />
+                    <Hits hitComponent={Hit} />
+                  </InstantSearch>
+                </div>
               </div>
               <p className='my-5 text-white'>
                 Nội dung phổ biến: Giới thiệu, tạo sản phẩm, thêm bàn, thêm danh

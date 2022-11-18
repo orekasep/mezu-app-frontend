@@ -1,11 +1,13 @@
 'use client';
 import React from 'react';
 import { googleSans } from '../fonts';
-import '../globals.scss';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
-import 'antd/dist/antd.variable.min.css';
 import { useHasScrolled } from 'hooks';
+
+import '../styles/globals.scss';
+import '../styles/antd.variable.scss';
+import 'antd/dist/antd.variable.min.css';
 
 export default function PageLayout({
   children,

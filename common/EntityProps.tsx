@@ -14,6 +14,7 @@ export interface ArticleProps {
     Slug: string;
     Thumbnail: ThumbnailProps;
     ThumbnailUrl?: string;
+    Content?: string;
   };
 }
 
