@@ -4,7 +4,6 @@
 'use client';
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import styled from 'styled-components';
 import Link from 'next/link';
 
 import background from 'public/images/home-background.png';
@@ -75,59 +74,6 @@ const features = [
   },
 ];
 
-const Wrapper = styled.div`
-  .ais-SearchBox-form {
-    display: flex;
-    position: relative;
-    .ais-SearchBox-input {
-      padding-left: 10px;
-      padding-right: 10px;
-      width: 100%;
-      height: 32px;
-      border-top-left-radius: 16px;
-      border-bottom-left-radius: 16px;
-      outline-width: 0;
-    }
-    .ais-SearchBox-submit {
-      width: 40px;
-      height: 32px;
-      border-top-right-radius: 16px;
-      border-bottom-right-radius: 16px;
-      background-color: #db6c8f;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    svg.ais-SearchBox-submitIcon {
-      fill: white;
-      width: 16px;
-      height: 16px;
-    }
-    .ais-SearchBox-reset {
-      position: absolute;
-      right: 45px;
-      top: 10px;
-      z-index: 10;
-    }
-  }
-
-  .ais-Hits {
-    position: absolute;
-    overflow: hidden;
-    background: #fff;
-    border-radius: 5px;
-    margin-top: 2px;
-    left: 0;
-    right: 0;
-    .ais-Hits-list {
-      margin-bottom: 0;
-    }
-    ais-highlight* {
-      color: #db6c8f;
-    }
-  }
-`;
-
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const Hit = ({ hit }: { hit: any }) => {
   const { _highlightResult } = hit;
@@ -141,7 +87,7 @@ const Hit = ({ hit }: { hit: any }) => {
 
 export default function KnowledgeBase() {
   return (
-    <Wrapper>
+    <div>
       <main className=''>
         <section className='h-[40vh] bg-gradient-to-br from-primary-lighter to-primary-darker relative'>
           <Image src={background} layout='fill' objectFit='cover' alt='' />
@@ -219,6 +165,6 @@ export default function KnowledgeBase() {
         </section>
         <ArticleSection />
       </main>
-    </Wrapper>
+    </div>
   );
 }
